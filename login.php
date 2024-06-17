@@ -1,8 +1,19 @@
 <?php
 include ("includes/header.php");
-?>
 
-<form id="form1" name="form1" action="action_login.php" method="post">
+if(isset($_SESSION["state_login"]) && $_SESSION["state_login"]=== true){
+?>
+<script type="text/javascript">
+  <--!
+  location.replace("index.php");
+  -->
+</script>
+<?php
+}
+?>
+<br/>
+<form  name="login" action="action_login.php" method="POST">
+
   <p>&nbsp;</p>
   <p>
     <label for="textfield">نام کاربری:</label>

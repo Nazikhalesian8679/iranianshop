@@ -1,16 +1,6 @@
 <?php
 	include("includes/header.php");
 	
-	if(isset($_SESSION["state_login"])&& $_SESSION["state_login"]===true)
-		?>
-        <script type="text/javascript">
-		location.replace("index.php");
-		</script>
-        
-        <?php
-	
-	
-	
 	if(isset($_POST['username'])&&!empty($_POST['username'])&&
 	   isset($_POST['password'])&&!empty($_POST['password'])){
 	  
@@ -23,7 +13,7 @@
 	$link=mysqli_connect("localhost","root","","shop_db");
 	
 	if(mysqli_connect_errno())
-	     exit("".mysqli_connect_error());
+	     exit("خطای به شرح زیر است".mysqli_connect_error());
 		 
 	$query="SELECT * FROM `users` WHERE username='$username' AND password='$password' ";
 	
@@ -39,13 +29,6 @@
 			$_SESSION["user_type"] = "admin";
 		
 	
-	?>
-	<script type="text/javascript">
-		<!--
-		location.replace("admin_products.php")
-		-->
-	</script>
-	<?php
 		}
 		echo("<p style='color:green'><b>{$row['realname']}به فروشگاه ایرانیان خوش امدید");
 	 } else
