@@ -78,6 +78,15 @@ if($uploadOk == 1){
     '$pro_price',
     '$pro_image',
     '$pro_detail')";
-}
-if(mysqli_query($link, $query))
+
+    if(mysqli_query($link, $query)===true)
+        echo("کالا اضافه شد");
+    else
+        echo("خطا در ثبت مشخصات");
+}else
+    echo("خطا در ثبت اطلاعات");
+
+include("includes/footer.php")
+
+
 ?>
