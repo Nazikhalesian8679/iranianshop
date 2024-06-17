@@ -4,14 +4,24 @@ include ("includes/header.php");
 if (isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true) {
   ?>
   <script type="text/javascript">
-      < --!
-    location.replace("index.php");
-      -- >
+    location.replace('index.php')
   </script>
   <?php
 }
 ?>
-
+<script type="text/javascript">
+  function check_empty() {
+    var username = '';
+    username = document.getElementById("username").value;
+    if (username == '')
+      alert("وارد کردن نام کاربری الزامیست");
+    else {
+      var r = confirm("از صحت اطلاعات  وارد شده اطمینان دارید?");
+      if (r == true)
+        document.register.submit();
+    }
+  }
+</script>
 <br />
 <form name="register" action="action_register.php" method="post">
   <table style="width:50%;" border="0" style="margin-left:auto; margin-right:auto;">
@@ -42,7 +52,7 @@ if (isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true) {
 
     <tr>
       <td><br /><br /></td>
-      <td><input type="submit" value="ثبت نام" />
+      <td><input type="button" value="ثبت نام" onClick="check_empty();" />
         &nbsp;&nbsp;&nbsp;
         <input type="reset" value="ریست" />
       </td>

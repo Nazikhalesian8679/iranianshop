@@ -27,12 +27,14 @@ session_start();
             <nav class="divTable">
                <ul class="divTableRow">
                   <li class="divTableCell"><a class="set_style_link" href="index.php">صفحه اصلی</a></li>
-                  <li class="divTableCell"><a class="set_style_link" href="register2.php">عضویت در سایت</a></li>
+                  <li class="divTableCell"><a class="set_style_link" href="register.php">عضویت در سایت</a></li>
                   <?php
                   if (isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true) {
                      ?>
-                     <li class="divTableCell"><a href="admin_products.php" class="set_style_link"> خروج از سایت</a></li>
-                     <?php echo ("({$_session["realname"]})") ?></a></li>
+                     <li class="divTableCell">
+                        <a href="logout.php" class="set_style_link"> خروج از سایت
+                           <?php echo ("({$_SESSION["realname"]})") ?></a>
+                     </li>
                      <?php
                   } else {
                      ?>
