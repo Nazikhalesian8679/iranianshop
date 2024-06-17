@@ -21,7 +21,7 @@ $result = mysqli_query($link, $query);
             ?>
             <td style="border-style: dotted dashed; vertical-align: top; width: 33%;">
                 <h4 style="color: brown;"><?php echo ($row['pro_name']); ?> </h4>
-                <img src="images/products<?php echo ($row['pro_image']); ?>">
+                <img width="80px" src="images/products/<?php echo ($row['pro_image']) ?>">
                 <br />
                 قیمت : <?php echo ($row['pro_price']); ?>&nbsp; ریال
                 <br />

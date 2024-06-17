@@ -27,11 +27,11 @@ if (!($_SESSION["state_login"]) && $_SESSION["state_login"] === true && $_SESSIO
 		</tr>
 		<tr>
 			<td> موجودی کالا <span style="color: red;">*</span></td>
-			<td> <input type="password" style="text-align: left;" id="pro_qty" name="pro_qty" /></td>
+			<td> <input type="number" style="text-align: left;" id="pro_qty" name="pro_qty" /></td>
 		</tr>
 		<tr>
 			<td> قیمت کالا <span style="color: red;">*</span></td>
-			<td> <input type="password" style="text-align: left;" id="pro_price" name="pro_price" /></td>
+			<td> <input type="text" style="text-align: left;" id="pro_price" name="pro_price" /></td>
 		</tr>
 		<tr>
 			<td> آپلود تصویر کالا <span style="color: red;">*</span></td>
