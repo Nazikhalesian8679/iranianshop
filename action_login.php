@@ -22,6 +22,8 @@ $query = "SELECT * FROM `users` WHERE username='$username' AND password='$passwo
 $result = mysqli_query($link, $query);
 
 $row = mysqli_fetch_array($result);
+?>
+<?php
 if ($row) {
 	$_SESSION["state_login"] = true;
 	$_SESSION["realname"] = $row['realname'];
@@ -29,12 +31,17 @@ if ($row) {
 		$_SESSION["user_type"] = "public";
 	elseif ($row["type"] == 1) {
 		$_SESSION["user_type"] = "admin";
+		?>
+		<script type="text/javascript">
+			location.replace("admin_products.php");
 
-
+		</script>
+		<?php
 	}
 	echo ("<p style='color:green'><b>{$row['realname']}به فروشگاه ایرانیان خوش امدید");
 } else
 	echo ("<p style='color:green'><b> نام کاربری یافت نشد</p></b>");
+
 
 
 mysqli_close($link);
