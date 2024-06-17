@@ -7,11 +7,7 @@ if (mysqli_connect_errno())
 
 
 $query = "INSERT INTO users (realname, username, password, email, type) VALUES ('$realname', '$username', '$password', '$email', '0')";
+$result = mysqli_query($link, $query);
 
-if (mysqli_query($link, $query) === true)
-    echo ($realname . "گرامی عضویت شما با نام کاربری " . $username . "در فروشگاه با موفقیت انجام شد");
-else
-    echo ("عضویت موفقیت امیز  نبود");
-$result =
     include ("includes/footer.php");
 ?>
