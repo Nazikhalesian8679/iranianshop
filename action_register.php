@@ -1,6 +1,8 @@
 <?php
 include ("includes/header.php");
 
+$link = mysqli_connect("localhost", "root", "", "shop_db");
+
 if (
   isset($_POST['realname']) && !empty($_POST['realname']) &&
   isset($_POST['username']) && !empty($_POST['username']) &&
@@ -23,10 +25,8 @@ if ($password != $repassword)
 if (filter_var($email, FILTER_VALIDATE_EMAIL) == false)
   exit("ایمیل را درست وارد کنید ");
 
-echo ("realname=" . $realname . "<br/>");
-echo ("username=" . $username . "<br/>");
-echo ("password=" . $password . "<br/>");
-echo ("email=" . $email . "<br/>");
+$query = "INSERT INTO users (realname, username, password, email, type) VALUES ('$realname', '$username', '$password', '$email', '0')";
+$result = mysqli_query($link, $query);
 
 
 
