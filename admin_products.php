@@ -1,10 +1,10 @@
 <?php
 include ("includes/header.php");
 
-if (isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true) {
+if (!($_SESSION["state_login"]) && $_SESSION["state_login"] === true && $_SESSION["user_type"] == "admin") {
 	?>
 	<script type="text/javascript">
-		location.replace("index.php");
+		location.replace("index.php")
 	</script>
 	<?php
 }
@@ -39,7 +39,8 @@ if (isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true) {
 		</tr>
 		<tr>
 			<td> توضیحات تکمیلی <span style="color: red;">*</span></td>
-			<td> <textarea id="pro_detail" name="pro_detail" cols="45" rows="10" wrap="virtual" /> </td>
+			<td> <textarea id="pro_detail" name="pro_detail" cols="45" rows="10" wrap="virtual"
+					style="resize: none;"></textarea> </td>
 		</tr>
 		<tr>
 			<td><br></br></td>
