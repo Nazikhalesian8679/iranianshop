@@ -37,8 +37,8 @@
 		    $_SESSION["user_type"]="public";
 		elseif($row["type"]==1){
 			$_SESSION["user_type"] = "admin";
-		}
-	}
+		
+	
 	?>
 	<script type="text/javascript">
 		<!--
@@ -46,7 +46,14 @@
 		-->
 	</script>
 	<?php
-		echo("<p style='color:green'><b>{$row['realname']}به فروشگاه ایرانیان خوش امدید")
-    
+		}
+		echo("<p style='color:green'><b>{$row['realname']}به فروشگاه ایرانیان خوش امدید");
+	 } else
+			echo("<p style='color:green'><b> نام کاربری یافت نشد</p></b>");
+
+
+	 	mysqli_close($link);
+		 include("includes/footer.php");
+    ?>
 </body>
 </html>
