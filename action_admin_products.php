@@ -11,11 +11,11 @@ if (!($_SESSION["state_login"]) && $_SESSION["state_login"] === true && $_SESSIO
 ?>
 <?php
 if (
-    isset($_POST['pro_code']) && !empty($_POST['$pro_code'])
-    && isset($_POST['pro_name']) && !empty($_POST['$pro_name'])
-    && isset($_POST['pro_qty']) && !empty($_POST['$pro-qty'])
-    && isset($_POST['pro_price']) && !empty($_POST['$pro_price'])
-    && isset($_POST['pro_detail']) && !empty($_POST['$pro_detail'])
+    isset($_POST['pro_code']) && !empty($_POST['pro_code']) &&
+    isset($_POST['pro_name']) && !empty($_POST['pro_name']) &&
+    isset($_POST['pro_qty']) && !empty($_POST['pro_qty']) &&
+    isset($_POST['pro_price']) && !empty($_POST['pro_price']) &&
+    isset($_POST['pro_detail']) && !empty($_POST['pro_detail']) && $_FILES['pro_image']['name']
 ) {
 
     $pro_code = $_POST['pro_code'];
@@ -34,7 +34,7 @@ $uploadOk = 1;
 $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
 
 
-$check = getimagesize($_FILES['pro_iamge']["tmp_name"]);
+$check = getimagesize($_FILES['pro_image']["tmp_name"]);
 if ($check !== false) {
     echo "پرونده انتخابی یک تصویر از نوع" . $check["mime"] . "است <br/>";
     $uploadOk = 1;
@@ -51,7 +51,6 @@ if ($_FILES["pro_image"]["size"] > (500 * 1024)) {
     echo "اندازه پرونده انتخابی بیشتر از 500 کیلو بایت اس<br/>";
     $uploadOk = 0;
 }
-
 if ($uploadOk == 0) {
     echo "پرونده انتخابی به سرویس دهنده ارسال نشد<br/>";
 } else {
@@ -76,14 +75,14 @@ if ($uploadOk == 1) {
     '$pro_image',
     '$pro_detail')";
 
-    if(mysqli_query($link, $query)===true)
-        echo("کالا اضافه شد");
+    if (mysqli_query($link, $query) === true)
+        echo ("کالا اضافه شد");
     else
-        echo("خطا در ثبت مشخصات");
-}else
-    echo("خطا در ثبت اطلاعات");
+        echo ("خطا در ثبت مشخصات");
+} else
+    echo ("خطا در ثبت اطلاعات");
 
-include("includes/footer.php")
+include ("includes/footer.php")
 
 
-?>
+    ?>
