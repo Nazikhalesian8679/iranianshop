@@ -27,6 +27,7 @@ $row = mysqli_fetch_array($result);
 if ($row) {
 	$_SESSION["state_login"] = true;
 	$_SESSION["realname"] = $row['realname'];
+	$_SESSION["username"] = $row['username'];
 	if ($row["type"] == 0)
 		$_SESSION["user_type"] = "public";
 	elseif ($row["type"] == 1) {
