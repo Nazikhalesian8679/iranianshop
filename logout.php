@@ -15,7 +15,6 @@ session_destroy();
 <body>
 
     <script type="text/javascript">
-
         location.replace("index.php");
     </script>
 

@@ -45,6 +45,15 @@ session_start();
                   <li class="divTableCell"><a class="set_style_link" href="#">درباره ما</a></li>
                   <li class="divTableCell"><a class="set_style_link" href="#">ارتباط با ما</a></li>
 
+                  <?php
+                  if (isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true && $_SESSION["user_type"] == "admin") {
+                     ?>
+
+                     <li class="divTableCell"><a class="set_style_link" href="admin_products.php">مدیریت محصولات</a></li>
+                     <?php
+                  }
+                  ?>
+
                </ul>
             </nav>
             <section class="divTable">
