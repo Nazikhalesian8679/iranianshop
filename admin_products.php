@@ -45,7 +45,7 @@ if (isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true) {
 			<td><br></br></td>
 			<td><input type="submit" value="افزودن کالا" />
 				&nbsp;&nbsp;&nbsp;
-				<input type="reset" value="جدید" />
+				<input type="reset" value="ریست" />
 			</td>
 
 		</tr>

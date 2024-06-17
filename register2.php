@@ -47,7 +47,7 @@ include ("includes/header.php");
       <td><br /><br /></td>
       <td><input type="button" value="ثبت نام" onClick="check_empty();" />
         &nbsp;&nbsp;&nbsp;
-        <input type="reset" value="جدید" />
+        <input type="reset" value="ریست" />
       </td>
     </tr>
   </table>

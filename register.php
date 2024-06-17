@@ -34,7 +34,7 @@ include ("includes/header.php");
       <td><br /><br /></td>
       <td><input type="submit" value="ثبت نام" />
         &nbsp;&nbsp;&nbsp;
-        <input type="reset" value="جدید" />
+        <input type="reset" value="ریست" />
       </td>
     </tr>
   </table>
