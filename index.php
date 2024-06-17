@@ -6,7 +6,7 @@ if (mysqli_connect_errno())
     exit("خطا با شرح زیر رخ داده است" . mysqli_connect_error());
 
 
-$query = "INSERT INTO users (realname, username, password, email, type) VALUES ('$realname', '$username', '$password', '$email', '0')";
+$query = "SELECT * FROM products";
 $result = mysqli_query($link, $query);
 ?>
 

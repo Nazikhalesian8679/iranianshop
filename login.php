@@ -15,7 +15,7 @@ include ("includes/header.php");
   <p>
     <input type="submit" name="submit" id="submit" value="ورود">
     &nbsp;&nbsp;&nbsp;
-    <input type="reset" name="reset" id="reset" value="جدید">
+    <input type="reset" name="reset" id="reset" value="ریست">
   </p>
 </form>
 

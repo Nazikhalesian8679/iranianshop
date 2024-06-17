@@ -25,7 +25,7 @@
                <ul class="divTableRow">
                   <li class="divTableCell"><a class="set_style_link" href="index.php">صفحه اصلی</a></li>
                   <li class="divTableCell"><a class="set_style_link" href="register2.php">عضویت در سایت</a></li>
-                  <li class="divTableCell"><a class="set_style_link" href="#">ورود به سایت</a></li>
+                  <li class="divTableCell"><a class="set_style_link" href="login.php">ورود به سایت</a></li>
                   <li class="divTableCell"><a class="set_style_link" href="#">درباره ما</a></li>
                   <li class="divTableCell"><a class="set_style_link" href="#">ارتباط با ما</a></li>
                   <?php
