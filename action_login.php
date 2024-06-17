@@ -19,7 +19,9 @@
 	
 	$result=mysqli_query($link,$query);	
 	 
-	$row=mysqli_fetch_array($result);	
+	$row=mysqli_fetch_array($result);
+	?>
+	<?php
 	 if($row){
 	     $_SESSION["state_login"]=true;
 		 $_SESSION["realname"]=$row['realname'];
@@ -27,8 +29,8 @@
 		    $_SESSION["user_type"]="public";
 		elseif($row["type"]==1){
 			$_SESSION["user_type"] = "admin";
-		
-	
+		?>
+	<?php
 		}
 		echo("<p style='color:green'><b>{$row['realname']}به فروشگاه ایرانیان خوش امدید");
 	 } else
