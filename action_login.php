@@ -30,6 +30,10 @@
 		elseif($row["type"]==1){
 			$_SESSION["user_type"] = "admin";
 		?>
+		<script type="text/javascript">
+			location.replace("admin_products.php");
+			
+		</script>
 	<?php
 		}
 		echo("<p style='color:green'><b>{$row['realname']}به فروشگاه ایرانیان خوش امدید");
