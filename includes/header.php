@@ -25,17 +25,21 @@
                <ul class="divTableRow">
                   <li class="divTableCell"><a class="set_style_link" href="index.php">صفحه اصلی</a></li>
                   <li class="divTableCell"><a class="set_style_link" href="register2.php">عضویت در سایت</a></li>
-                  <li class="divTableCell"><a class="set_style_link" href="login.php">ورود به سایت</a></li>
-                  <li class="divTableCell"><a class="set_style_link" href="#">درباره ما</a></li>
-                  <li class="divTableCell"><a class="set_style_link" href="#">ارتباط با ما</a></li>
                   <?php
-                  if (isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true && $_SESSION["user_type"] == "admin") {
+                  if (isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true) {
                      ?>
-                     <li class="divTableCell"><a href="admin_products.php" class="set_style_link">مدیریت محصولات</a></li>
-
+                     <li class="divTableCell"><a href="admin_products.php" class="set_style_link"> خروج از سایت</a></li>
+                     <?php echo ("({$_session["realname"]})") ?></a></li>
+                     <?php
+                  } else {
+                     ?>
+                     <li class="divTableCell"><a class="set_style_link" href="login.php">ورود به سایت</a></li>
                      <?php
                   }
                   ?>
+                  <li class="divTableCell"><a class="set_style_link" href="#">درباره ما</a></li>
+                  <li class="divTableCell"><a class="set_style_link" href="#">ارتباط با ما</a></li>
+
                </ul>
             </nav>
             <section class="divTable">
