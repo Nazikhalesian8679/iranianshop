@@ -1,6 +1,5 @@
 <?php
 include ("includes/header.php");
-$link = mysqli_connect("localhost", "root", "", "shop_db");
 if (!($_SESSION["state_login"]) && $_SESSION["state_login"] === true && $_SESSION["user_type"] == "admin") {
     ?>
     <script type="text/javascript">
@@ -8,14 +7,19 @@ if (!($_SESSION["state_login"]) && $_SESSION["state_login"] === true && $_SESSIO
     </script>
     <?php
 }
+
+
+
 ?>
 <?php
+
 if (
-    isset($_POST['pro_code']) && !empty($_POST['pro_code']) &&
-    isset($_POST['pro_name']) && !empty($_POST['pro_name']) &&
-    isset($_POST['pro_qty']) && !empty($_POST['pro_qty']) &&
-    isset($_POST['pro_price']) && !empty($_POST['pro_price']) &&
-    isset($_POST['pro_detail']) && !empty($_POST['pro_detail']) && $_FILES['pro_image']['name']
+    $_GET['action'] == 'DELETE' ||
+    (isset($_POST['pro_code']) && !empty($_POST['pro_code']) &&
+        isset($_POST['pro_name']) && !empty($_POST['pro_name']) &&
+        isset($_POST['pro_qty']) && !empty($_POST['pro_qty']) &&
+        isset($_POST['pro_price']) && !empty($_POST['pro_price']) &&
+        isset($_POST['pro_detail']) && !empty($_POST['pro_detail']))
 ) {
 
     $pro_code = $_POST['pro_code'];
@@ -27,6 +31,45 @@ if (
 
 } else
     exit("برخی فیلد ها مقدار دهی نشده است");
+
+$link = mysqli_connect("localhost", "root", "", "shop_db");
+
+if (mysqli_connect_errno())
+    exit("خطای به شرح زیر است" . mysqli_connect_error());
+
+if (isset($_GET['action'])) {
+    $id = $_GET['id'];
+
+    switch ($_GET['action']) {
+        case 'EDIT':
+            $query = "UPDATE products SET
+            pro_code = '$pro_code',
+            pro_name = '$pro_name',
+            pro_qty = '$pro_qty',
+            pro_price = '$pro_price',
+            pro_detail = '$pro_detail'
+
+            WHERE pro_code = '$id'";
+
+            if (mysqli_query($link, $query) === true)
+                echo ("<p stule='color:green;'><b>محصول انتخاب شده با موفقیت ویرایش شد</b></p>");
+            else
+                echo ("<p style='color:red;'><b>خطا در ویرایش محصول</b></p>");
+            break;
+        case 'DELETE':
+            $query = "DELETE FROM shop_db.products WHERE pro_code = '$id'";
+            $file = "images/products/'$pro_image'";
+            if (mysqli_query($link, $query) === true && !unlink($file))
+                echo ("<p stule='color:green;'><b>محصول انتخاب شده با موفقیت حدف شد</b></p>");
+            else
+                echo ("<p style='color:red;'><b>خطا در حذف محصول</b></p>");
+            break;
+    }
+
+    mysqli_close($link);
+    include ("includes/footer.php");
+    exit();
+}
 
 $targrt_dir = "images/products/";
 $target_file = $targrt_dir . $_FILES["pro_image"]["name"];
