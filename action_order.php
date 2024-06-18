@@ -1,13 +1,6 @@
 <?php
 include ("includes/header.php");
 
-if (isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true) {
-    ?>
-    <script type="text/javascript">
-        location.replace('index.php')
-    </script>
-    <?php
-}
 
 $link = mysqli_connect("localhost", "root", "", "shop_db");
 
@@ -16,7 +9,7 @@ if (mysqli_connect_errno())
 
 $pro_code = $_POST['pro_code'];
 $pro_name = $_POST['pro_name'];
-$pro_email = $_POST['pro_qty'];
+$pro_qty = $_POST['pro_qty'];
 $pro_price = $_POST['pro_price'];
 $total_price = $_POST['total_price'];
 
@@ -27,6 +20,7 @@ $mobile = $_POST['mobile'];
 $address = $_POST['address'];
 
 $username = $_SESSION['username'];
+
 
 $query = "INSERT INTO orders
 (id,

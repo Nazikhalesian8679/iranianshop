@@ -18,7 +18,7 @@ $result = mysqli_query($link, $query);
             $counter++;
             ?>
 
-            <td style="border-style: dotted dashed; vertical-align: top; width: 33%;">
+            <td style="border-style: dotted dashed; vertical-align: top; overflow: hidden;">
                 <a style="text-decoration: none; display: block; overflow-wrap: break-word;"
                     href="product_detail.php?id=<?php echo ($row['pro_code']); ?>">
                     <h4 style="color: brown; margin: 0px; padding: 15px 0px;"><?php echo ($row['pro_name']); ?></h4>

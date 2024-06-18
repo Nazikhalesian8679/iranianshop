@@ -20,8 +20,8 @@ if (!(isset($_SESSION["state_login"]) && $_SESSION["state_login"] === true)) {
     کلیک کنید
     <br /><br />
     <?php
+    exit();
 }
-exit();
 ?>
 
 <?php
@@ -46,7 +46,7 @@ $result = mysqli_query($link, $query);
                     <tr>
                         <td>نام کالا<span style="color:red;">*</span></td>
                         <td><input type="text" style="text-algin: right; background-color:lightgray;" id="pro_name"
-                                name="pro_name" value="<?php echo ($row['$pro_name']); ?>" readonly /></td>
+                                name="pro_name" value="<?php echo ($row['pro_name']); ?>" readonly /></td>
                     </tr>
                     <tr>
                         <td> تعداد درخواستی<span style="color:red;">*</span></td>
@@ -66,7 +66,7 @@ $result = mysqli_query($link, $query);
                     </tr>
                     <script type="text/javascript">
                         function calc_price() {
-                            var pro_qty = <?php echo ($row['$pro_qty']); ?>;
+                            var pro_qty = <?php echo ($row['pro_qty']); ?>;
                             var price = document.getElementById('pro_price').value;
                             var count = document.getElementById('pro_qty').value;
                             var total_price;
@@ -86,7 +86,7 @@ $result = mysqli_query($link, $query);
 
                     </script>
                     <?php
-                    $query = "SELECT * FROM users WHERE username='{$_SESSION["user_name"]}'";
+                    $query = "SELECT * FROM users WHERE username='{$_SESSION["username"]}'";
                     $result = mysqli_query($link, $query);
                     $user_row = mysqli_fetch_array($result);
                     ?>
@@ -98,8 +98,9 @@ $result = mysqli_query($link, $query);
                     <tr>
                         <td style="width:40%;">نام خریدار<span style=color:red;></span></td>
                         <td style="width:60%;">
-                            <input type="text" id="realname" name="realname" value="<?php echo ($user_row['email']); ?>"
-                                style="background-color=lightgray;" readonly />
+                            <input type="text" id="realname" name="realname"
+                                value="<?php echo ($user_row['realname']); ?>" style="background-color=lightgray;"
+                                readonly />
                         </td>
                     </tr>
 
@@ -111,13 +112,14 @@ $result = mysqli_query($link, $query);
 
                     <tr>
                         <td>شماره تلفن همراه <span style=color:red;>*</span></td>
-                        <td><input type="text" id="mobail" name="mobail" value="09" style="text-algin:left;" /></td>
+                        <td><input type="text" id="mobail" name="mobail" maxlength="11" value="09"
+                                style="text-algin:left;" /></td>
                     </tr>
 
                     <tr>
                         <td> ادرس دقیق پستی<span style=color:red;>*</span></td>
                         <td><textarea id="address" name="address" cols="30" row="3" wrap="virtual"
-                                style="text-algin:right; font-family:tahoma;" readonly></textarea></td>
+                                style="text-algin:right; font-family:tahoma;"></textarea></td>
                     </tr>
 
                     <tr>
@@ -154,17 +156,18 @@ $result = mysqli_query($link, $query);
                 <table>
                     <tr>
                         <td style="border.style:dotted dashed; vertical-align: top; width:33%;">
-                            <h4 style="color: brown;"><?php echo ($row['pro_src']) ?></h4>
-                            <img src="images/products/<?php echo ($row['$pro_image']) ?>" width="250px" height="120px" />
+                            <h4 style="color: brown;"><?php echo ($row['pro_name']) ?></h4>
+                            <img src="images/products/<?php echo ($row['pro_image']) ?>" width="250px" height="120px" />
                             <br />
-                            قیمت واحد:<?php echo ($row['$pro_price']) ?>&nbsp;ریال
+                            قیمت واحد:<?php echo ($row['pro_price']) ?>&nbsp;ریال
                             <br />
-                            مقدار موجودی: <span style="color:red" ;><?php echo ($row['$pro_qty']) ?></span>
+                            مقدار موجودی: <span style="color:red" ;><?php echo ($row['pro_qty']) ?></span>
                             <br />
-                            توضیحات: <span style="color: green;"></span>
-                            <?php
-                            $count = (strlen($row['$pro_detail'], 0, (int) ($count / 4)));
-                            ?>
+                            توضیحات: <span style="color: green;"><?php
+                            $count = strlen($row['pro_detail']);
+                            echo (substr($row['pro_detail'], 0, (int) ($count / 4)));
+                            ?></span>
+
                             <br /><br />
                         </td>
             </td>
@@ -172,6 +175,3 @@ $result = mysqli_query($link, $query);
         </tr>
     </table>
 </form>
-<?php
-include ("includes/footer.php")
-    ?>
